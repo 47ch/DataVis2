@@ -1,0 +1,132 @@
+{ 
+    "$schema"  :   "https://vega.github.io/schema/vega-lite/v5.json"  , 
+    "width"  :   500  , 
+    "height"  :   250  , 
+    "title"  :   "Internet Users By Country"  , 
+    "data"  : { 
+      "url"  :   "number-of-internet-users-by-country.csv" 
+    }, 
+    "transform": [
+        { 
+            "calculate"  :   "datum.Users/datum.Population * 100"  , 
+            "as"  :   "Internet users as a percentage of population" 
+        }, 
+        {  "filter"  :   "Continent_selection == null || datum.Continent == Continent_selection"  }
+    ],  
+    "params" : [ 
+        { 
+            "name" :  "Continent_selection" , 
+            "bind"  : { 
+                "input"  :   "select"  , 
+                "options"  : [ 
+                    null  , 
+                    "Europe",
+                    "Asia",
+                    "Oceania",
+                    "Africa"
+                ], 
+                "labels"  :[ 
+                    "Show All"  , 
+                    "Europe",
+                    "Asia",
+                    "Oceania",
+                    "Africa"
+                ], 
+                "name"  :   "Continent Selection: " 
+            } 
+        }
+
+    ], 
+    "encoding"  : { 
+        "x" : { 
+            "field" :  "Year" , 
+            "type" :  "quantitative" , 
+            "title" :  "Year" 
+        }, 
+        "y" : { 
+            "field" :  "Users" , 
+            "type" :  "quantitative" 
+        }
+    },
+    "layer"  : [  
+        { 
+            "mark"  :   "line"  , 
+            "encoding"  : { 
+                "tooltip" : [ 
+                    { "field" :  "Country" ,  "type" :  "nominal" }, 
+                    { "field" : "Year" , "type" : "quantitative"},
+                    { "field" : "Users", "type" : "quantitative"},
+                    { 
+                        "field" :  "Internet users as a percentage of population" , 
+                        "type" :  "quantitative" , 
+                        "format" :  ".2f" 
+                    } 
+                ], 
+                "color"  : { 
+                    "field"  :   "Country"  , 
+                    "type"  :   "nominal"  , 
+                    "scale"  : { 
+                      "domain"  : [ 
+                        "South Korea",
+                        "Malaysia",
+                        "Philippines",
+                        "Mali",
+                        "Ethiopia",
+                        "Australia",
+                        "Hong Kong",
+                        "France"
+                    ], 
+                      "range"  : [ 
+                        "#e41a1c",
+                        "#377eb8",
+                        "#4daf4a",
+                        "#ff7f00",
+                        "#ffff33",
+                        "#a65628",
+                        "#f781bf",
+                        "#999999"
+                    ] 
+                  } 
+                }, 
+                "opacity"  : { 
+                    "value"  :  0.6
+                }
+            }
+        }, 
+        { 
+            "mark"  : { 
+            "type"  :   "text"  , 
+            "align"  :   "right"  , 
+            "baseline"  :   "middle"  , 
+            "dx"  :   -12  , 
+            "fontSize"  :   11.5  , 
+            "fontStyle"  :   "italic" 
+            }, 
+                "encoding"  : { 
+                "text"  : {  "field"  :   "Country"  ,   "type"  :   "nominal"  }, 
+                "color"  : {  "value"  :   "black"  }, 
+                "opacity"  : { 
+                        "condition"  : { 
+                        "test"  :   "datum['Year'] == '2016'",
+                        "value"  :   1 
+                    }, 
+                        "value"  :   0 
+                }, 
+                "tooltip" : [ 
+                    { "field" :  "Country" ,  "type" :  "nominal" }, 
+                    { "field" : "Year" , "type" : "quantitative"},
+                    { "field" : "Users", "type" : "quantitative"},
+                    { 
+                        "field" :  "Internet users as a percentage of population" , 
+                        "type" :  "quantitative" , 
+                        "format" :  ".2f" 
+                    } 
+                ]
+                
+            }  
+        } 
+    ] 
+    
+} 
+
+
