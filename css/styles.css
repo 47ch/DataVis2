@@ -4,15 +4,16 @@ body *{
 
 h1 {
     font-weight: 900;
+    font-family: 'Verdana';
 }
 
 body {
-    background-color: lightgray;
+    background-color: white;
 }
 
 .page {
-    width: 850px;
-    background-color: white;
+    width: 1400px;
+    background-color: lightgray;
     margin: auto;
     padding: 50px;
     padding-top: 35px;
@@ -41,4 +42,15 @@ h1 {
 
 .small-font {
     font-size: 14px;
+}
+
+p {
+    font-size: 14px;
+}
+
+.center-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; 
 }

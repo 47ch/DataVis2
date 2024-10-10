@@ -1,0 +1,57 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Share of Individuals using the Internet",
+    "data": {
+        "url": "share-of-individuals-using-the-internet.csv"
+    },
+    "transform": [
+      {
+        "calculate": "100 - datum.UsageAsPercentageOfPopulation",
+        "as": "Non-Users"
+      },
+      {
+        "calculate": "datum.UsageAsPercentageOfPopulation", 
+        "as": "Users"
+      },
+      {
+        "fold": ["Users", "Non-Users"],
+        "as": ["Categories", "amount"]
+      },
+      {"filter": "datum.Year == yearParam"}
+    ],
+    "params": [
+        {
+          "name": "yearParam",
+          "value": 2018,
+          "bind": {
+            "input": "range",
+            "min": 2010,
+            "max": 2018,
+            "step": 1,
+            "name": "Year: "
+          }
+        }
+      ],
+    "repeat": {
+      "row": ["A"]
+    },
+    "spec": {
+      "width": 250,
+      "height": 250,
+      "mark": "arc",
+      "encoding": {
+        "theta": {"field": "amount", "type": "quantitative"},
+        "color": {"field": "Categories", "type": "nominal", "legend": {"orient": "bottom"}},
+        "facet": {
+          "field": "Country",
+          "type": "nominal",
+          "spacing": 130,
+          "columns": 4
+        },
+        "tooltip": [
+          {"field": "Users", "type": "quantitative"},
+          {"field": "Non-Users", "type": "quantitative"}
+        ]
+      }
+    }
+  }

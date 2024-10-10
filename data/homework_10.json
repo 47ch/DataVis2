@@ -1,7 +1,7 @@
 { 
     "$schema"  :   "https://vega.github.io/schema/vega-lite/v5.json"  , 
-    "width"  :   500  , 
-    "height"  :   250  , 
+    "width"  :   950  , 
+    "height"  :   350  , 
     "title"  :   "Internet Users By Country"  , 
     "data"  : { 
       "url"  :   "number-of-internet-users-by-country.csv" 
@@ -81,7 +81,7 @@
                         "#377eb8",
                         "#4daf4a",
                         "#ff7f00",
-                        "#ffff33",
+                        "#aa2233",
                         "#a65628",
                         "#f781bf",
                         "#999999"
