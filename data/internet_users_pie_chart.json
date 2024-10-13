@@ -32,22 +32,17 @@
           }
         }
       ],
-    "repeat": {
-      "row": ["A"]
-    },
+    "facet": {
+        "field": "Country",
+        "type": "nominal"
+      },
     "spec": {
-      "width": 250,
-      "height": 250,
+      "width": 120,
+      "height": 120,
       "mark": "arc",
       "encoding": {
         "theta": {"field": "amount", "type": "quantitative"},
         "color": {"field": "Categories", "type": "nominal", "legend": {"orient": "bottom"}},
-        "facet": {
-          "field": "Country",
-          "type": "nominal",
-          "spacing": 130,
-          "columns": 4
-        },
         "tooltip": [
           {"field": "Users", "type": "quantitative"},
           {"field": "Non-Users", "type": "quantitative"}

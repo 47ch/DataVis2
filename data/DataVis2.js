@@ -1,5 +1,5 @@
-var specVis1 = "./homework_9.json";
-var specVis2 = "./homework_10.json";
+var specVis1 = "./broadband_map.json";
+var specVis2 = "./internet_line.json";
 var specVis3 = "./mobile_subscription_bar_chart.json";
 var specVis4 = "./internet_users_pie_chart.json";
 
